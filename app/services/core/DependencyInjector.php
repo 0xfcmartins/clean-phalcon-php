@@ -30,6 +30,9 @@ class DependencyInjector extends FactoryDefault
         return $this->get('config');
     }
 
+    /**
+     * Bind all the declared services
+     */
     protected function bindServices()
     {
         $reflection = new ReflectionObject($this);
@@ -38,8 +41,7 @@ class DependencyInjector extends FactoryDefault
         foreach ($methods as $method) {
 
             if ((strlen($method->name) > 10) && (strpos($method->name, 'initShared') === 0)) {
-                $this->set(lcfirst(substr($method->name, 10)), $method->getClosure($this));
-                continue;
+                $this->setShared(lcfirst(substr($method->name, 10)), $method->getClosure($this));
             }
 
             if ((strlen($method->name) > 4) && (strpos($method->name, 'init') === 0)) {

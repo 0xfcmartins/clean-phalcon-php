@@ -8,6 +8,12 @@ use Phalcon\Mvc\View\Engine\Volt;
 use Phalcon\Session\Manager;
 use Phalcon\Url;
 
+/**
+ * Application dependencies injector manager
+ *
+ * @author Francisco Martins {@link <mailto:fcmartins@portoeditora.pt>}
+ * @version 1.000.000, 2021-11-8 13:47
+ */
 class ServicesManager extends DependencyInjector
 {
 

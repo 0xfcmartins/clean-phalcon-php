@@ -7,9 +7,9 @@ use Phalcon\Mvc\Application;
 use App\Services\ServicesManager;
 
 try {
+    $config = require_once __DIR__ . "/../app/config/config.php";
     require_once __DIR__ . "/../app/services/core/ApplicationLoader.php";
 
-    $config = require_once __DIR__ . "/../app/config/config.php";
     ApplicationLoader::register($config);
 
     $application = new Application();
