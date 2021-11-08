@@ -11,23 +11,25 @@ without using `Di\FactoryDefault`. This example uses Volt as template engine:
 ```
 Phacon-php/
 ├── app
-│   ├── config
-│   │   ├── config.php
-│   │   ├── loader.php
-│   │   └── services.php
-│   ├── controllers
-│   │   ├── ControllerBase.php
-│   │   └── IndexController.php
-│   └── views
-│       ├── index
-│       │   ├── index.volt
-│       │   └── test.volt
-│       ├── index.volt
-│       └── layouts
-│           └── template.volt
-├── index.html
+│   ├── config
+│   │   └── config.php
+│   ├── controllers
+│   │   ├── BaseController.php
+│   │   └── IndexController.php
+│   ├── services
+│   │   ├── core
+│   │   │   ├── ApplicationLoader.php
+│   │   │   └── DependencyInjector.php
+│   │   └── ServicesManager.php
+│   └── views
+│       ├── index
+│       │   └── index.volt
+│       ├── partials
+│       │   ├── footer.volt
+│       │   └── head.volt
+│       └── base.volt
 └── public
-    └── index.php
+    └── index.php
 ```
 
 ## License
