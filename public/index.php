@@ -1,20 +1,33 @@
 <?php
 
+/*
+ *  Copyright © 2022. Porto Editora S.A.
+ *  All Rights Reserved. This software is the proprietary information of Porto Editora Group.
+ */
+
 error_reporting(E_ALL);
 
-use App\Services\Core\ApplicationLoader;
-use Phalcon\Mvc\Application;
-use App\Services\ServicesManager;
+define('APP_PATH', realpath('..') . '/');
 
+use Phalcon\Mvc\Application;
+use Sipe\Services\Core\ApplicationLoader;
+use Sipe\Services\ServicesManager;
+
+/**
+ * Phalcon application bootstrap
+ *
+ * @author Francisco Martins {@link <mailto:fcmartins@portoeditora.pt>}
+ * @version 1.000.000, 2022-02-3 22:42
+ */
 try {
-    $config = require_once __DIR__ . "/../app/config/config.php";
-    require_once __DIR__ . "/../app/services/core/ApplicationLoader.php";
+    include APP_PATH . "app/services/core/ApplicationLoader.php";
+    $config = include APP_PATH . "app/config/config.php";
 
     ApplicationLoader::register($config);
 
     $application = new Application();
     $application->setDI(new ServicesManager($config));
-    $application->handle($config->domain)->send();
+    $application->handle()->send();
 } catch (Exception $e) {
     echo $e->getMessage();
 }

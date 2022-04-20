@@ -1,18 +1,13 @@
 # Phalcon PHP
 
-These are examples of [MVC][mvc-pattern] file structures you can employ using Phalcon >= 3.0.x
-
-## Simple-Volt
-
-This is a very simple [MVC][mvc-pattern] structure, it contains one model, two controllers and a view.
-This example does not implement namespaces. Services are defined in `public/index.php`
-without using `Di\FactoryDefault`. This example uses Volt as template engine:
+This is a clean of [MVC][mvc-pattern] file structures you can use to develop and employ using Phalcon >= 3.0.x
 
 ```
 Phacon-php/
 ├── app
-│   ├── config
-│   │   └── config.php
+│   ├── cache (.volt compile cache)
+│   ├── config (Project configuration and environment vars)
+│   │   └── config.php (Phalcon app config)
 │   ├── controllers
 │   │   ├── BaseController.php
 │   │   └── IndexController.php
@@ -34,9 +29,7 @@ Phacon-php/
 
 ## License
 
-Phalcon MVC Examples is open source software licensed under the New BSD License.
-See the LICENSE.txt file for more. <br>
-Copyright (c) 2011-2016, Phalcon Framework Team
+Copyright © 2021. Porto Editora S.A. All Rights Reserved. This software is the proprietary information of Porto Editora S.A. Group.
 
 [devtools]: https://github.com/phalcon/phalcon-devtools
 [mvc-pattern]: https://en.wikipedia.org/wiki/Model–view–controller

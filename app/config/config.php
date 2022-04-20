@@ -1,25 +1,33 @@
 <?php
+/*
+ *  Copyright © 2022. Porto Editora S.A.
+ *  All Rights Reserved. This software is the proprietary information of Porto Editora Group.
+ */
 
 use Phalcon\Config;
 
 return new Config(
     [
-        "domain" => "http://localhost/",
+        "domain" => "",
         "system" => [
-            "voltCache" => __DIR__ . "/../../app/cache/",
+            "voltCache" => APP_PATH . "app/cache/",
         ],
         "application" => [
-            "controllersDir" => __DIR__ . "/../../app/controllers/",
-            "modelsDir" => __DIR__ . "/../../app/models/",
-            "viewsDir" => __DIR__ . "/../../app/views/",
-            "pluginsDir" => __DIR__ . "/../../app/plugins/",
-            "libraryDir" => __DIR__ . "/../../app/library/",
-            "cacheDir" => __DIR__ . "/../../app/cache/",
-            "servicesDit" => __DIR__ . "/../../app/services/"
+            "controllersDir" => APP_PATH . "app/controllers/",
+            "viewsDir" => APP_PATH . "app/views/",
+            "pluginsDir" => APP_PATH . "app/plugins/",
+            "libraryDir" => APP_PATH . "app/library/",
+            "cacheDir" => APP_PATH . "app/cache/",
+            "servicesDir" => APP_PATH . "app/services/",
+            "utilsDir" => APP_PATH . "app/utils/",
+            "baseUri" => "/mvc/simple-volt/",
         ],
-        "namespaces" => [
-            'App\Controllers' => __DIR__ . "/../../app/controllers/",
-            'App\Services' => __DIR__ . "/../../app/services/",
+        'namespaces' => [
+            'Sipe\Services' => APP_PATH . 'app/services/',
+            'Sipe\Services\Core' => APP_PATH . 'app/services/core/',
+            'Sipe\Utils' => APP_PATH . 'app/utils/',
+            'Sipe\Plugins' => APP_PATH . 'app/plugins/',
+            'Sipe\Exceptions' => APP_PATH . 'app/exceptions/',
         ]
     ]
 );

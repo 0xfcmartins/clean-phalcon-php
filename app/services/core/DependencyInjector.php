@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Core;
+namespace Sipe\Services\Core;
 
 use Phalcon\Config;
 use Phalcon\DI\FactoryDefault;

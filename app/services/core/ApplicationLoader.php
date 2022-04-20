@@ -1,6 +1,10 @@
 <?php
+/*
+ *  Copyright © 2022. Porto Editora S.A.
+ *  All Rights Reserved. This software is the proprietary information of Porto Editora Group.
+ */
 
-namespace App\Services\Core;
+namespace Sipe\Services\Core;
 
 use Phalcon\Config;
 use Phalcon\Loader;
@@ -21,10 +25,15 @@ class ApplicationLoader
     public static function register(Config $baseConfig)
     {
         $loader = new Loader();
-        if (isset($baseConfig->application))
-            $loader->registerDirs((array)$baseConfig->application);
+        $loader->registerDirs(
+            [
+                $baseConfig->application->controllersDir
+            ]
+        );
+
         if (isset($baseConfig->namespaces))
             $loader->registerNamespaces((array)$baseConfig->namespaces);
+
         $loader->register();
     }
 

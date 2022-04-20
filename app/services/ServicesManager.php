@@ -1,12 +1,20 @@
 <?php
+/*
+ *  Copyright © 2022. Porto Editora S.A.
+ *  All Rights Reserved. This software is the proprietary information of Porto Editora Group.
+ */
 
-namespace App\Services;
+namespace Sipe\Services;
 
-use App\Services\Core\DependencyInjector;
+use Phalcon\Events\Manager;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\Url;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
-use Phalcon\Session\Manager;
-use Phalcon\Url;
+use Phalcon\Session\Adapter\Files;
+use Sipe\Services\Core\DependencyInjector;
+use Sipe\Utils\Translator;
+
 
 /**
  * Application dependencies injector manager
@@ -16,6 +24,20 @@ use Phalcon\Url;
  */
 class ServicesManager extends DependencyInjector
 {
+
+    public function initDispatcher(): Dispatcher
+    {
+        $eventsManager = new Manager();
+        $dispatcher = new Dispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    }
+
+    protected function initBaseUrl()
+    {
+        return $this->getConfig()->application->baseUri;
+    }
 
     public function initUrl(): Url
     {
@@ -50,12 +72,22 @@ class ServicesManager extends DependencyInjector
         return $volt;
     }
 
-    public function initSession(): Manager
+    public function initSession(): Files
     {
-        $session = new Manager();
+        $session = new Files();
         $session->start();
 
         return $session;
+    }
+
+    protected function initTranslator(): Translator
+    {
+        return new Translator();
+    }
+
+    protected function initApp(): ApplicationService
+    {
+        return new ApplicationService();
     }
 
 }
